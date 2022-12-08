@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Limite
+  - Walls
+  - ColliderAbajo
+  - Punto
+  - Cuerpo
+  - Miga
+  - Roca
+  - Foreground
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Background
+  - Interactables
+  - Walls
+  - Player
+  - Puntos
+  - Foreground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4066789963
+    locked: 0
+  - name: Puntos
+    uniqueID: 4149303821
+    locked: 0
+  - name: Walls
+    uniqueID: 1276249407
+    locked: 0
+  - name: Interactables
+    uniqueID: 2107445865
+    locked: 0
+  - name: Player
+    uniqueID: 2715672225
+    locked: 0
+  - name: Foreground
+    uniqueID: 274931779
+    locked: 0
