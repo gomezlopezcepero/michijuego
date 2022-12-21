@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
  
                 if(direction.y < pasos[pasos.Count-2].y && unaVez) {
                     if(ultimo != 2) {
-                     //   cuerp = cuerpoGiro;
+                        cuerp = cuerpoGiro;
                      transform.position = Vector3.MoveTowards(new Vector3(transform.position.x,transform.position.y-ajusteGiro,transform.position.z), direction, 5f);
                          
                          giro = true;
@@ -118,9 +118,10 @@ public class PlayerMovement : MonoBehaviour
 
                     transform.rotation =  new Quaternion(0,0,0,0);
                     ultimo = 2;
+                    Debug.Log(ultimo);
                 } else if(direction.y > pasos[pasos.Count-2].y && unaVez) {
                     if(ultimo != 3) {
-                     //   cuerp = cuerpoGiro;
+                        cuerp = cuerpoGiro;
                      transform.position = Vector3.MoveTowards(new Vector3(transform.position.x,transform.position.y+ajusteGiro,transform.position.z), direction, 5f);
                         
                         giro = true;
@@ -132,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                     transform.rotation =  new Quaternion(0,0,180,0);
                     ultimo = 3;
+                    Debug.Log(ultimo);
                 }
                   
 
@@ -144,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
                 if(direction.x < pasos[pasos.Count-2].x && unaVez) {
                     
                     if(ultimo != 0) {
-                     //   cuerp = cuerpoGiro;
+                        cuerp = cuerpoGiro;
                      transform.position = Vector3.MoveTowards(new Vector3(transform.position.x-ajusteGiro,transform.position.y,transform.position.z), direction, 5f);
                          
                         giro = true;
@@ -157,10 +159,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                     transform.rotation = Quaternion.Euler(new Vector3(0,0,270));
                     ultimo = 0;
+                    Debug.Log(ultimo);
                 } else if(direction.x > pasos[pasos.Count-2].x && unaVez){
                     
                     if(ultimo != 1) {
-                     //   cuerp = cuerpoGiro;
+                        cuerp = cuerpoGiro;
                      transform.position = Vector3.MoveTowards(new Vector3(transform.position.x+ajusteGiro,transform.position.y,transform.position.z), direction, 5f);
                          
                          giro = true;
@@ -175,6 +178,7 @@ public class PlayerMovement : MonoBehaviour
                     
                     transform.rotation = Quaternion.Euler(new Vector3(0,0,90));
                     ultimo = 1;
+                    Debug.Log(ultimo);
                 }
 
 
@@ -232,11 +236,11 @@ public IEnumerator interrumpirMovimiento(float seconds)
         }
 
         if(ultimo == 2) {
-            pos = new Vector3(pos.x,(pos.y+ajusteCuerpo),pos.z);
+            pos = new Vector3(pos.x,(pos.y+ajusteCuerpo+0.1f),pos.z);
         } else if(ultimo == 3) {
-            pos = new Vector3(pos.x,(pos.y-ajusteCuerpo),pos.z);
+            pos = new Vector3(pos.x,(pos.y-ajusteCuerpo-0.1f),pos.z);
         } else if(ultimo == 0) {
-            pos = new Vector3((pos.x+ajusteCuerpo), pos.y,pos.z);
+            pos = new Vector3((pos.x+ajusteCuerpo+0.1f), pos.y,pos.z);
         } else if(ultimo == 1) {
             pos = new Vector3((pos.x-ajusteCuerpo), pos.y,pos.z);
         }

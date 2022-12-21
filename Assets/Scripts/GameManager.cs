@@ -6,13 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    ScrollMenu scroll;
+    Menu menu;
+
+
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        scroll = FindObjectOfType<ScrollMenu>();
+        menu = FindObjectOfType<Menu>();
+
     }
 
-    // Update is called once per frame
+    // Update is calleñd once per frame
     void Update()
     {
         
@@ -28,7 +36,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ResetGameSession() {
-
+        Time.timeScale = 1;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
 
@@ -37,8 +45,25 @@ public class GameManager : MonoBehaviour
 
 
     public void IniciarJuego() {
+        
+        if(!scroll.isDragging) {
+        SceneManager.LoadScene("Selector Levels");
+        }
 
-        SceneManager.LoadScene("Level 1");
+    }
+
+    public void volverMenu() {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Menu");
+
+    }
+
+
+    public void selectLevel(string level) {
+        
+        if(!scroll.isDragging) {
+        SceneManager.LoadScene(level);
+        }
 
     }
 
@@ -47,6 +72,11 @@ public class GameManager : MonoBehaviour
 
         Application.Quit();
 
+    }
+
+    public void abrirMenu() {
+        
+        menu.abrirMenu();
     }
 
 

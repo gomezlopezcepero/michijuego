@@ -10,7 +10,7 @@ public class ColliderArriba : MonoBehaviour
     bool colisionArriba = true;
      Vector3 sca;
     float trans;
-    [SerializeField] float valorTrans = -0.05f;
+    float valorTrans = -0.5f;
 
 
 
@@ -24,14 +24,14 @@ public class ColliderArriba : MonoBehaviour
     void Update()
     {
         if(!colisionArriba) {
-            transform.localScale += new Vector3(0,-0.3f,0);
+           // transform.localScale += new Vector3(0,-0.3f,0);
             transform.Translate(0, valorTrans,0);
             trans = trans + valorTrans;
          }
 
-         if(trans < -3) {
+         if(trans < -20) {
  
-            StartCoroutine(corregirCollider());
+           // StartCoroutine(corregirCollider());
          }
 
     }

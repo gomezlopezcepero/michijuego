@@ -11,25 +11,28 @@ public class ColliderDerecha : MonoBehaviour
     bool colisionDerecha = true;
     Vector3 sca;
     float trans;
-    [SerializeField] float valorTrans = -0.05f;
+    float valorTrans = 0.75f;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         sca = transform.localScale;
-    }
+     }
+
     // Update is called once per frame
     void Update()
     {
+        valorTrans = 70f * Time.deltaTime;
         if(!colisionDerecha) {
-            transform.localScale += new Vector3(0,-0.3f,0);
-            transform.Translate(0, valorTrans,0);
-            trans = trans + valorTrans;
+        //    transform.localScale += new Vector3(0,-0.3f,0);
+            transform.Translate(0, -valorTrans,0);
+            trans = trans + -valorTrans;
+         }
 
-        }
-        if(trans < -3) {
-             StartCoroutine(corregirCollider());
+         if(trans < -350) {
+            // StartCoroutine(corregirCollider());
          }
 
     }

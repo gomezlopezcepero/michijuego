@@ -38,7 +38,7 @@ GameObject[] GOs;
 
 
     void OnMouseDown() {
-        
+   //     Debug.Log(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject());
         if(!player.enUso && player.iniciado) {
             player.enUso = true;
         player.moverse(transform.position);

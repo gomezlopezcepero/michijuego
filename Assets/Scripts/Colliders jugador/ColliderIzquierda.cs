@@ -11,31 +11,31 @@ public class ColliderIzquierda : MonoBehaviour
     bool colisionIzquierda = true;
      Vector3 sca;
     float trans;
-    [SerializeField] float valorTrans = +0.05f;
+    float valorTrans = 0.75f;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerMovement>();
         sca = transform.localScale;
      }
 
     // Update is called once per frame
     void Update()
     {
+        valorTrans = 70f * Time.deltaTime;
         if(!colisionIzquierda) {
-            transform.localScale += new Vector3(0,-0.3f,0);
+        //    transform.localScale += new Vector3(0,-0.3f,0);
             transform.Translate(0, valorTrans,0);
             trans = trans + valorTrans;
          }
 
-         if(trans > 3) {
+         if(trans < 350) {
 
-            StartCoroutine(player.interrumpirMovimiento(0.5f));
+         //   StartCoroutine(player.interrumpirMovimiento(0.5f));
 
-           // StartCoroutine(corregirCollider());
+        //    StartCoroutine(corregirCollider());
          }
 
     }
