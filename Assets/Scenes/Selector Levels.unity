@@ -1397,6 +1397,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834da9206fc06be418965a9b747179d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transSFX: {fileID: 0}
+  backgroundSFX: {fileID: 0}
+  transicion: {fileID: 0}
+  volumeon: {fileID: 0}
+  volumeoff: {fileID: 0}
+  esperar: 1
 --- !u!1 &993139485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,6 +2126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834da9206fc06be418965a9b747179d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transSFX: {fileID: 0}
+  backgroundSFX: {fileID: 0}
+  transicion: {fileID: 0}
+  volumeon: {fileID: 0}
+  volumeoff: {fileID: 0}
+  esperar: 1
 --- !u!114 &1645916892
 MonoBehaviour:
   m_ObjectHideFlags: 0

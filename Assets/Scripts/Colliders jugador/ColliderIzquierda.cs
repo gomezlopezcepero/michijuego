@@ -7,6 +7,7 @@ public class ColliderIzquierda : MonoBehaviour
    
    
     PlayerMovement player;
+    InteractablesPlayer interactable;
 
     bool colisionIzquierda = true;
      Vector3 sca;
@@ -19,6 +20,8 @@ public class ColliderIzquierda : MonoBehaviour
     void Start()
     {
         sca = transform.localScale;
+        player = FindObjectOfType<PlayerMovement>();
+        interactable = FindObjectOfType<InteractablesPlayer>();
      }
 
     // Update is called once per frame
@@ -31,23 +34,20 @@ public class ColliderIzquierda : MonoBehaviour
             trans = trans + valorTrans;
          }
 
-         if(trans < 350) {
-
-         //   StartCoroutine(player.interrumpirMovimiento(0.5f));
-
-        //    StartCoroutine(corregirCollider());
+         if(trans > 150 || trans < -150) {
+            StartCoroutine(corregirCollider());
          }
 
     }
 
     public IEnumerator corregirCollider()
     {
-
+        Debug.Log(trans+ "trans");
         yield return new WaitForSecondsRealtime(1f);
 
         restaurarEstado();
         colisionIzquierda = false;
-        StartCoroutine(player.interrumpirMovimiento(1));
+        player.reiniciarRastreo();
     } 
 
 
@@ -66,6 +66,16 @@ public class ColliderIzquierda : MonoBehaviour
             Color matColor = rend.material.color;
             float alphaValue = rend.material.color.a;
             rend.material.color = new Color(matColor.r, matColor.g, matColor.b, 1f);
+        }
+
+        if(other.tag == "Miga") {
+            interactable.spriteRenderer = other.gameObject.GetComponent<SpriteRenderer>();
+            interactable.spriteRenderer.sprite = interactable.newSprite;
+           /* Renderer rend = other.gameObject.transform.GetComponent<Renderer>();
+            Color matColor = rend.material.color;
+            float alphaValue = rend.material.color.a;
+            rend.material.color = new Color(1f, 1f, 0, 1f);
+            other.gameObject.SetActive(true); */
         }
 
         if(other.tag == "Cuerpo") {

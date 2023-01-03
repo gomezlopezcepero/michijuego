@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6844890037220190394}
   - component: {fileID: 6844890037220190395}
   - component: {fileID: 6844890037220190392}
+  - component: {fileID: 7728838016566928687}
   m_Layer: 0
   m_Name: PuertaMigas
   m_TagString: Walls
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2107445865
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1fb2012ed90c2754ca4dfc963cd4f2d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -133,3 +134,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7728838016566928687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844890037220190393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af43388dbc6fcdf4d9d2092b76372320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

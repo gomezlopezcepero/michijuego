@@ -7,6 +7,8 @@ public class ColliderDerecha : MonoBehaviour
    
    
     
+    PlayerMovement player;
+    InteractablesPlayer interactable;
 
     bool colisionDerecha = true;
     Vector3 sca;
@@ -19,6 +21,8 @@ public class ColliderDerecha : MonoBehaviour
     void Start()
     {
         sca = transform.localScale;
+        player = FindObjectOfType<PlayerMovement>();
+        interactable = FindObjectOfType<InteractablesPlayer>();
      }
 
     // Update is called once per frame
@@ -31,8 +35,8 @@ public class ColliderDerecha : MonoBehaviour
             trans = trans + -valorTrans;
          }
 
-         if(trans < -350) {
-            // StartCoroutine(corregirCollider());
+         if(trans > 150 || trans < -150) {
+             StartCoroutine(corregirCollider());
          }
 
     }
@@ -45,6 +49,7 @@ public class ColliderDerecha : MonoBehaviour
 
         restaurarEstado();
         colisionDerecha = false;
+        player.reiniciarRastreo();
     } 
 
 
@@ -64,6 +69,16 @@ public class ColliderDerecha : MonoBehaviour
             float alphaValue = rend.material.color.a;
             rend.material.color = new Color(matColor.r, matColor.g, matColor.b, 1f);
             other.gameObject.SetActive(true);
+        }
+
+        if(other.tag == "Miga") {
+            interactable.spriteRenderer = other.gameObject.GetComponent<SpriteRenderer>();
+            interactable.spriteRenderer.sprite = interactable.newSprite;
+           /* Renderer rend = other.gameObject.transform.GetComponent<Renderer>();
+            Color matColor = rend.material.color;
+            float alphaValue = rend.material.color.a;
+            rend.material.color = new Color(1f, 1f, 0, 1f);
+            other.gameObject.SetActive(true); */
         }
 
 

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ColliderAbajo : MonoBehaviour
 {
-
+    PlayerMovement player;
+    InteractablesPlayer interactable;
     bool colisionAbajo = true;
     PuntoMovimiento punto;
       Vector3 sca;
@@ -17,6 +18,8 @@ public class ColliderAbajo : MonoBehaviour
     void Start()
     {
         sca = transform.localScale;
+        player = FindObjectOfType<PlayerMovement>();
+        interactable = FindObjectOfType<InteractablesPlayer>();
      }
 
     // Update is called once per frame
@@ -29,8 +32,7 @@ public class ColliderAbajo : MonoBehaviour
             trans = trans + -valorTrans;
          }
 
-         if(trans < -350) {
- 
+         if(trans > 150 || trans < -150) {
             StartCoroutine(corregirCollider());
          }
 
@@ -39,11 +41,11 @@ public class ColliderAbajo : MonoBehaviour
 
     public IEnumerator corregirCollider()
     {
-
         yield return new WaitForSecondsRealtime(1f);
 
         restaurarEstado();
         colisionAbajo = false;
+        player.reiniciarRastreo();
     } 
 
 
@@ -62,6 +64,16 @@ public class ColliderAbajo : MonoBehaviour
             float alphaValue = rend.material.color.a;
             rend.material.color = new Color(matColor.r, matColor.g, matColor.b, 1f);
             other.gameObject.SetActive(true);
+        }
+
+        if(other.tag == "Miga") {
+             interactable.spriteRenderer = other.gameObject.GetComponent<SpriteRenderer>();
+            interactable.spriteRenderer.sprite = interactable.newSprite;
+           /* Renderer rend = other.gameObject.transform.GetComponent<Renderer>();
+            Color matColor = rend.material.color;
+            float alphaValue = rend.material.color.a;
+            rend.material.color = new Color(1f, 1f, 0, 1f);
+            other.gameObject.SetActive(true); */
         }
 
         if(other.tag == "Cuerpo") {

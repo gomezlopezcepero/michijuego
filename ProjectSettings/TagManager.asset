@@ -13,6 +13,9 @@ TagManager:
   - Roca
   - Foreground
   - Menu
+  - Hueco
+  - volume
+  - intPlayer
   layers:
   - Default
   - TransparentFX
@@ -26,7 +29,7 @@ TagManager:
   - Player
   - Puntos
   - Foreground
-  - 
+  - Transition
   - 
   - 
   - 
@@ -67,4 +70,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 274931779
+    locked: 0
+  - name: Transition
+    uniqueID: 972459049
     locked: 0

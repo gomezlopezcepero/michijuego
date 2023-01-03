@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6346558593180252375}
   - component: {fileID: 6346558593180252372}
   - component: {fileID: 6346558593180252368}
+  - component: {fileID: 2146422858}
   m_Layer: 5
   m_Name: Interface
   m_TagString: Untagged
@@ -115,6 +116,104 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834da9206fc06be418965a9b747179d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transSFX: {fileID: 8300000, guid: 12821bf940aa6cb4d9d198d307f400d6, type: 3}
+  transicion: {fileID: 8571360727475923554, guid: 268d73142d7e6d343a224bbf23ee8971, type: 3}
+--- !u!82 &2146422858
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346558593180252373}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6346558593335580520
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +377,7 @@ RectTransform:
   m_GameObject: {fileID: 6346558593955384812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9846934, y: 1.9846934, z: 1.9846934}
+  m_LocalScale: {x: 1.8794451, y: 1.8794451, z: 1.8794451}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6346558593335580523}
@@ -287,7 +386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -978, y: 365}
+  m_AnchoredPosition: {x: -878, y: 428}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6346558593955384808
@@ -412,7 +511,7 @@ RectTransform:
   m_GameObject: {fileID: 9173738829142412348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2854191, y: 6.583625, z: 5.9851136}
+  m_LocalScale: {x: 1.2058903, y: 6.176296, z: 5.6148148}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6346558593180252369}
@@ -420,7 +519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1013, y: 365}
+  m_AnchoredPosition: {x: 1049, y: 431}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5610981501096254553
@@ -504,4 +603,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2384202210495648230}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6346558593180252368}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: abrirMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

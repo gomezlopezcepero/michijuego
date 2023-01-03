@@ -2,23 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
     ScrollMenu scroll;
+    PlayerMovement player;
     Menu menu;
+    [SerializeField] AudioClip transSFX;
+    
+    [SerializeField] AudioClip backgroundSFX;
+     [SerializeField] GameObject transicion;
+     GameObject[] volume;
 
-
+    public Sprite volumeon;
+    public Sprite volumeoff;
+    public bool esperar = true;
 
     // Start is called before the first frame update
     void Awake()
     {
-        scroll = FindObjectOfType<ScrollMenu>();
+         scroll = FindObjectOfType<ScrollMenu>();
         menu = FindObjectOfType<Menu>();
+      //  
+        
 
     }
+
+    void Start()
+    {
+        player = FindObjectOfType<PlayerMovement>();
+        volume = GameObject.FindGameObjectsWithTag("volume");
+
+
+        if(AudioListener.volume == 1) {
+            GameObject.Find("Volume").GetComponent<Image>().sprite = volumeon;
+        } else {
+            GameObject.Find("Volume").GetComponent<Image>().sprite = volumeoff;
+        }
+
+        AudioSource.PlayClipAtPoint(backgroundSFX, Camera.main.transform.position);
+
+     }
 
     // Update is calleñd once per frame
     void Update()
@@ -26,6 +52,16 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void changeVolume() {
+        Debug.Log(AudioListener.volume);
+        if(AudioListener.volume == 1) {
+            AudioListener.volume = 0;
+            GameObject.Find("Volume").GetComponent<Image>().sprite = volumeoff;
+        } else {
+            AudioListener.volume = 1;
+            GameObject.Find("Volume").GetComponent<Image>().sprite = volumeon;
+        }
+    }
 
    public void sinMovimientos() {
 
@@ -36,19 +72,47 @@ public class GameManager : MonoBehaviour
     }
 
     public void ResetGameSession() {
-        Time.timeScale = 1;
+       // Debug.Log("isTrans");
+        Debug.Log(esperar);
+        if(!esperar) {
+        
+        esperar = true;
+        StartCoroutine(player.desaparecerPlayer());
+        
+
+
+        AudioSource.PlayClipAtPoint(transSFX, Camera.main.transform.position);
+        var cuerpa =Instantiate(transicion);
+            StartCoroutine(reset());
+
+        }
+
+    }
+
+    public void ResetMenu() {
+       // Debug.Log("isTrans");
+       Time.timeScale = 1;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
 
     }
+
+
+    IEnumerator reset() {
+        yield return new WaitForSecondsRealtime(2f);
+
+         Time.timeScale = 1;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+
+  }
  
 
 
     public void IniciarJuego() {
         
-        if(!scroll.isDragging) {
         SceneManager.LoadScene("Selector Levels");
-        }
+        
 
     }
 

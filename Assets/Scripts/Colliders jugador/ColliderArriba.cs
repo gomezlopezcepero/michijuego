@@ -6,7 +6,7 @@ public class ColliderArriba : MonoBehaviour
 {
   
   
-
+    InteractablesPlayer interactable;
     bool colisionArriba = true;
      Vector3 sca;
     float trans;
@@ -18,6 +18,7 @@ public class ColliderArriba : MonoBehaviour
     void Start()
     {
         sca = transform.localScale;
+        
      }
 
     // Update is called once per frame
@@ -62,6 +63,15 @@ public class ColliderArriba : MonoBehaviour
             float alphaValue = rend.material.color.a;
             rend.material.color = new Color(matColor.r, matColor.g, matColor.b, 1f);
             other.gameObject.SetActive(true);
+        }
+
+        if(other.tag == "Miga") {
+          
+           /* Renderer rend = other.gameObject.transform.GetComponent<Renderer>();
+            Color matColor = rend.material.color;
+            float alphaValue = rend.material.color.a;
+            rend.material.color = new Color(1f, 1f, 0, 1f);
+            other.gameObject.SetActive(true); */
         }
 
         if(other.tag == "Cuerpo") {

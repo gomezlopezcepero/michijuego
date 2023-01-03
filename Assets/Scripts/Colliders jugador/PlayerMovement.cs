@@ -5,12 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    [SerializeField] AudioClip crawlSFX;
+    
+    GameManager game;
     PuntoMovimiento puntos;
     ColliderAbajo abajo;
     ColliderArriba arriba;
     ColliderDerecha derecha;
     ColliderIzquierda izquierda;
-
+    InteractablesPlayer migas;
+ 
     private Vector2 screenPoint;
      Rigidbody2D myRigidbody;
      BoxCollider2D myBoxCollider;
@@ -27,12 +31,12 @@ public class PlayerMovement : MonoBehaviour
     float posActualX = 0;
     float posActualY = 0;
     int ultimo = 2;
-
+    int cont = 0;
 
 
     private Vector3 touchPosition;
     private Vector3 direction;
-    private float moveSpeed = 5f;
+    private float moveSpeed = 6f;
     float ajusteCuerpo = 4;
     float ajusteGiro = 0.5f;
     public bool enUso = false;
@@ -53,13 +57,16 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         enUso = false;
+        iniciado = false;
         cuerp = null;
+        migas = FindObjectOfType<InteractablesPlayer>();
         puntos = FindObjectOfType<PuntoMovimiento>();
         abajo = FindObjectOfType<ColliderAbajo>();
         arriba = FindObjectOfType<ColliderArriba>();
         derecha = FindObjectOfType<ColliderDerecha>();
         izquierda = FindObjectOfType<ColliderIzquierda>();
-
+        game = FindObjectOfType<GameManager>();
+ 
         myRigidbody = GetComponent<Rigidbody2D>();
         myBoxCollider = GetComponent<BoxCollider2D>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -67,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         posActualY = transform.position.y;
         pasos.Add(transform.position);
 
-        StartCoroutine(interrumpirMovimiento(1));
+        StartCoroutine(interrumpirMovimiento(0.5f));
 
     }
 
@@ -82,17 +89,28 @@ public class PlayerMovement : MonoBehaviour
 
      }
 
+     public Vector3 getPosition() {
+
+        return transform.position;
+
+     }
+
 
     void movimiento() {
-
+        
+        if(cont == 0) {
+            cont++;
+            AudioSource.PlayClipAtPoint(crawlSFX, Camera.main.transform.position);
+        } 
        // theCoroutine = StartCoroutine(interrumpirMovimiento());
-
+        
         float step = moveSpeed;
 
         transform.position = Vector3.MoveTowards(transform.position, direction, step * Time.deltaTime);
         
 
         if(direction == transform.position) {
+            cont = 0;
             reiniciarRastreo();
         }  
 
@@ -205,7 +223,7 @@ public IEnumerator interrumpirMovimiento(float seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
         iniciado = true;
-        reiniciarRastreo();
+     //   reiniciarRastreo();
     
 //    cuerp = cuerpo;
     } 
@@ -213,6 +231,8 @@ public IEnumerator interrumpirMovimiento(float seconds)
 
     public void reiniciarRastreo()
     {
+        
+        migas.resetearMigas();
         puntos.resetearPuntos();
         //estos reseteos son necesarios para que los colliders  se puedan disparar una y otra vez
         arriba.resetearCollider();
@@ -221,7 +241,9 @@ public IEnumerator interrumpirMovimiento(float seconds)
         izquierda.resetearCollider();
         
         boolMover = false;
+        StartCoroutine(puntos.desactivarPuntos());
 
+        
     } 
 
     public IEnumerator aparecerCuerpo(Vector3 pos)
@@ -229,10 +251,10 @@ public IEnumerator interrumpirMovimiento(float seconds)
         float velocidadSpawn;
 
         if(giro) {
-            velocidadSpawn = 0f;
+            velocidadSpawn = 0.1f;
             giro = false;
         } else {
-            velocidadSpawn = 0.5f;
+            velocidadSpawn = 0.35f;
         }
 
         if(ultimo == 2) {
@@ -246,10 +268,26 @@ public IEnumerator interrumpirMovimiento(float seconds)
         }
         yield return new WaitForSecondsRealtime(velocidadSpawn);
 
-    cuerpos.Add(cuerpo);
+    
     var cuerpa =Instantiate(cuerpo, pos, transform.rotation);
+    cuerpos.Add(cuerpa);
+    puntos.aparBool = true;
 //    cuerp = cuerpo;
     } 
+
+
+    public IEnumerator desaparecerPlayer()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        
+         foreach (GameObject cuer in cuerpos) {
+          //  cuer.SetActive(false);
+            Destroy(cuer);
+        } 
+
+        Destroy(gameObject);
+        
+     }
 
     public void aparecer(Vector3 pos) {
 
